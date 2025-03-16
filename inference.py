@@ -1,6 +1,6 @@
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
-def load_model(model_path="gpt2-finance-model"):
+def load_model(model_path="gpt2-finance-model-latest"):
     model = GPT2LMHeadModel.from_pretrained(model_path)
     tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
     device = "cpu" # or cuda

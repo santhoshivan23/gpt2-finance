@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  train-finetune:
+  train-finetune-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,10 +19,11 @@ jobs:
           pip install -r requirements.txt
       - name: Train
         run: python train.py
-      - name: Push model to S3
-        uses: shallwefootball/s3-upload-action@master
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET}}
-          aws_bucket: gpt2-finance-model
-          source_dir: 'gpt2-finance-model-latest'
+          command: cp
+          source: ./gpt2-finance-model-latest
+          destination: s3://gpt2-finance-model/latest
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET }}
+          aws_region: ap-south-1
