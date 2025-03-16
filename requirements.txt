@@ -1,4 +1,4 @@
 datasets
 transformers
 fastapi
-torch<=2
+torch
