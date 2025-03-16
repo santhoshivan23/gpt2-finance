@@ -19,3 +19,10 @@ jobs:
           pip install -r requirements.txt
       - name: Train
         run: python train.py
+      - name: Push model to S3
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET}}
+          aws_bucket: gpt2-finance-model
+          source_dir: 'gpt2-finance-model-latest'
