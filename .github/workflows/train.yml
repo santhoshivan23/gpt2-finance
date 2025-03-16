@@ -27,3 +27,4 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET }}
           aws_region: ap-south-1
+          flags: --recursive
