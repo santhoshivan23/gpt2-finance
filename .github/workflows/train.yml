@@ -23,7 +23,7 @@ jobs:
         with:
           command: cp
           source: ./gpt2-finance-model-latest
-          destination: s3://gpt2-finance-model/latest
+          destination: s3://gpt2-finance-model/full/latest
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET }}
           aws_region: ap-south-1
