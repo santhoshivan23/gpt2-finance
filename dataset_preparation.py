@@ -11,7 +11,7 @@ def load_and_tokenize_dataset():
     tokenizer.pad_token = tokenizer.eos_token  # Set padding token
     
     ds = load_dataset("Josephgflowers/Finance-Instruct-500k")
-    ds["train"] = ds["train"].select(range(20000))
+    ds["train"] = ds["train"].select(range(2200))
     tokenized_ds = ds.map(lambda batch: format_conversation(batch, tokenizer), batched=True, num_proc=2)
     tokenized_ds = tokenized_ds.remove_columns(["user", "assistant"])
     
